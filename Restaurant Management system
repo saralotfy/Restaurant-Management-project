@@ -1,1 +1,65 @@
+.DATA
 
+M1 DB 10,13,10,13,'                         >>>>Welcome to Our Restaurant<<<<$',10,13
+ 
+M2 DB 10,13,10,13,'>>>>Enter your Choice $'
+
+M3 DB 10,13,'                                   1.Breakfast Menue         $' 
+M4 DB 10,13,'                                   2.Dinner Menue            $'
+M5 DB 10,13,'                                   3.Appetizers              $'
+M6 DB 10,13,'                                   4.Drinks                  $'  
+               
+               
+M7 DB 10,13,10,13,'>>>>Choose your food from the menu$' 
+
+;BREAKFAST
+  
+M8  DB 10,13,'                  1.Cheese pate             10/-                      $'
+M9  DB 10,13,'                  2.Croissant               10/-                      $'
+M10 DB 10,13,'                  3.English cake            10/-                      $'
+M11 DB 10,13,'                  4.Cold toast              10/-                      $'
+M12 DB 10,13,'                  5.Omeltte corned beef     20/-                      $'
+M13 DB 10,13,'                  6.Roomi cheese            20/-                      $'
+M14 DB 10,13,'                  7.White cheese            10/-                      $'
+M15 DB 10,13,'                  8.Smoked Turkey           20/-                      $'
+M16 DB 10,13,'                  9.Club sandwidch          60/-                      $' 
+
+;DINNER
+
+M17 DB 10,13,'                  1.Pasta chicken           60/-                               $'
+M18 DB 10,13,'                  2.Salmon marmed           80/-                               $'
+M19 DB 10,13,'                  3.Grilled chicken         80/-                               $' 
+M20 DB 10,13,'                  4.Pasta red               40/-                               $'
+M21 DB 10,13,'                  5.Chicken alfredo         50/-                               $'
+M22 DB 10,13,'                  6.Shrimp pasta            70/-                               $'
+M23 DB 10,13,'                  7.Meat balls              60/-                               $'
+M24 DB 10,13,'                  8.Crust pizza             60/-                               $'
+M25 DB 10,13,'                  9.Piccata mushroom        60/-                               $'  
+
+
+
+;INVALID 
+
+M36 DB 10,13,10,13,'!!!INVALID ENTRY!!!$'
+M37 DB 10,13,10,13,'*** Try Again ***$' 
+
+;ORDER
+
+M38 DB 10,13,10,13,'>>>>Enter your order number: $'
+M39 DB 10,13,10,13,'Quantity: $'
+M40 DB 10,13,10,13,'Total Price: $' 
+
+M41 DB 10,13,10,13,'1.Return to the Main Menu$'
+M42 DB 10,13,'2.Exit$' 
+
+;L.E
+
+MU DB ' L.E$'
+
+;frame
+
+
+MF1 DB 10,13,'                  -----------------------------------------------$'
+
+MF2 DB 10,13,'      -------------------------------------------------------------------$' 
+NEWLINE DB 10,13,10,13,' $'
