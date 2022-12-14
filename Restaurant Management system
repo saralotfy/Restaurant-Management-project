@@ -237,7 +237,7 @@ MAIN PROC
         
         JMP INVALID
         
-         DINNER:
+  DINNER:
           
         LEA DX,M7    
         MOV AH,9h
@@ -307,29 +307,29 @@ MAIN PROC
         INT 21H
         MOV BL,AL
         SUB BL,48      
-         CMP BL,1
-    JE SIXTY
-    
-    CMP BL,2
-    JE EIGHTY
-    
-    CMP BL,3
-    JE EIGHTY 
-    
-    CMP BL,4
-    JE FOURTY
-    
-    CMP BL,5
-    JE FIFTY
-    
-    CMP BL,6
-    JE SEVENTY
-    
-    CMP BL,7
-    JE SIXTY
-    
-    CMP BL,8
-    JE SIXTY 
-    
-    CMP BL,9
-    JE SIXTY
+        CMP BL,1
+        JE SIXTY
+
+        CMP BL,2
+        JE EIGHTY
+
+        CMP BL,3
+        JE EIGHTY 
+
+        CMP BL,4
+        JE FOURTY
+
+        CMP BL,5
+        JE FIFTY
+
+        CMP BL,6
+        JE SEVENTY
+
+        CMP BL,7
+        JE SIXTY
+
+        CMP BL,8
+        JE SIXTY 
+
+        CMP BL,9
+        JE SIXTY
