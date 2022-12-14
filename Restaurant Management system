@@ -60,7 +60,7 @@ M40 DB 10,13,10,13,'Total Price: $'
 
 M41 DB 10,13,10,13,'1.Return to the Main Menu$'
 M42 DB 10,13,'2.Exit$' 
-
+M43 DB 10,13,10,13,'>>>>Choose your drink from the menu$'
 ;L.E
 
 MU DB ' L.E$'
