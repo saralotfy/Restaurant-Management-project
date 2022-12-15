@@ -49,7 +49,15 @@ M28 DB 10,13,'                  3.Latte caffe             10/-                  
 M29 DB 10,13,'                  4.Cappuccino              10/-                               $'
 M30 DB 10,13,'                  5.Mango smoothy           10/-                               $'
 M31 DB 10,13,'                  6.Lemon juice             10/-                               $'
- 
+
+;APPETIZERS
+
+M32 DB 10,13,'                  1.Spring rool                20/-                                       $'
+M33 DB 10,13,'                  2.Shrimp kunafa              80/-                                       $'
+M34 DB 10,13,'                  3.Onion rings                20/-                                       $'
+M35 DB 10,13,'                  4.Gartin potato              25/-                                       $' 
+M45 DB 10,13,'                  5-Buffalo Chicken Wings      35/-                                       $' 
+M46 DB 10,13,'                  6-Mozzarella stick           30/-                                       $'       
 
 
 ;INVALID 
@@ -427,6 +435,94 @@ MAIN PROC
         
         
         JMP INVALID
+        
+APPETIZERS:
+    
+        LEA DX,M7    
+        MOV AH,9h
+        INT 21H
+        
+        LEA DX,NEWLINE 
+        MOV AH,9h
+        INT 21H
+        
+        LEA DX,MF2
+        MOV AH,9h
+        INT 21H
+               
+        LEA DX,MF2
+        MOV AH,9h
+        INT 21H
+              
+        LEA DX,M32    
+        MOV AH,9h
+        INT 21H 
+                
+        LEA DX,M33  
+        MOV AH,9h
+        INT 21H
+        
+        LEA DX,M34
+        MOV AH,9h          
+        INT 21H 
+        
+        LEA DX,M35
+        MOV AH,9h           
+        INT 21H
+               
+        LEA DX,M45
+        MOV AH,9h           
+        INT 21H       
+               
+               
+        LEA DX,M46
+        MOV AH,9h           
+        INT 21H 
+                     
+                                 
+               
+        LEA DX,MF2
+        MOV AH,9h
+        INT 21H
+        
+        LEA DX,MF2
+        MOV AH,9h
+        INT 21H
+              
+        LEA DX,M38              
+        MOV AH,9h
+        INT 21H 
+              
+        MOV AH,1h
+        INT 21H
+        MOV BL,AL
+        SUB BL,48
+                   
+                   
+                   
+                   
+                   
+        CMP BL,1
+        JE TEN
+        
+        CMP BL,2
+        JE TEN
+        
+        CMP BL,3
+        JE TEN 
+        
+        CMP BL,4
+        JE TEN
+        
+        CMP BL,5
+        JE TEN
+        
+        CMP BL,6
+        JE TEN
+        
+        
+        JMP INVALID               
+                   
 
 main endp
 end main
