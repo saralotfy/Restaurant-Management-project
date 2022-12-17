@@ -145,30 +145,45 @@ MAIN PROC
     LEA DX,MF1
     MOV AH,9h
     INT 21H
-      
-    LEA DX,M2
-    MOV AH,9h
-    INT 21H
+    EE1: 
+    
+   EE1:
+    
+        LEA DX,NEWLINE
+        MOV AH,9h
+        INT 21H
          
-    MOV AH,1h
-    INT 21H
-    MOV BH,AL
-    SUB BH,48
-    
-    CMP BH,1
-    JE BREATFAST
-    
-    CMP BH,2
-    JE DINNER   
-     
-    CMP BH,3
-    JE APPETIZERS 
+        LEA DX,M2
+        MOV AH,9h
+        INT 21H      
+         
+        MOV AH,1h
+        INT 21H
+        MOV BH,AL
+        SUB BH,48
         
-    CMP BH,4
-    JE DRINKS
-       
-    JMP INVALID       
-    
+        CMP BH,1
+        JE BREATFAST
+        
+         CMP BH,2
+         JE DINNER   
+         
+         CMP BH,3
+         JE APPETIZERS 
+                
+         CMP BH,4
+         JE DRINKS
+        
+        LEA DX,M36
+        MOV AH,9
+        INT 21H 
+            
+            
+        LEA DX,M37 
+        MOV AH,9
+        INT 21H
+        
+        loop EE1      
        
    BREATFAST:
           
@@ -232,44 +247,57 @@ MAIN PROC
         MOV AH,9h
         INT 21H
               
-        LEA DX,M38              
-        MOV AH,9h
-        INT 21H 
-              
-        MOV AH,1h
-        INT 21H
-        MOV BL,AL
-        SUB BL,48 
+         EE2:
         
-        CMP BL,1
-        JE TEN
+            LEA DX,M38              
+            MOV AH,9h
+            INT 21H 
+            
+            
+            MOV AH,1h
+            INT 21H
+            MOV BL,AL
+            SUB BL,48 
+            
+            CMP BL,1
+            JE TEN
+            
+            CMP BL,2
+            JE TEN
+            
+            CMP BL,3
+            JE TEN 
+            
+            CMP BL,4
+            JE TEN
+            
+            CMP BL,5
+            JE TEN
+            
+            CMP BL,6
+            JE TWENTY
+            
+            CMP BL,7
+            JE TEN
+            
+            CMP BL,8
+            JE TWENTY 
+            
+            CMP BL,9
+            JE SIXTY
         
-        CMP BL,2
-        JE TEN
-        
-        CMP BL,3
-        JE TEN 
-        
-        CMP BL,4
-        JE TEN
-        
-        CMP BL,5
-        JE TWENTY
-        
-        CMP BL,6
-        JE TWENTY
-        
-        CMP BL,7
-        JE TEN
-        
-        CMP BL,8
-        JE TWENTY 
-        
-        CMP BL,9
-        JE SIXTY
+            
+            LEA DX,M36
+            MOV AH,9
+            INT 21H 
+                
+                
+            LEA DX,M37 
+            MOV AH,9
+            INT 21H
+            loop EE2
+            
     
-        
-        JMP INVALID
         
   DINNER:
           
