@@ -447,35 +447,47 @@ MAIN PROC
         MOV AH,9h
         INT 21H
               
-        LEA DX,M38              
-        MOV AH,9h
-        INT 21H 
+        EE4:
+                
+            LEA DX,M38              
+            MOV AH,9h
+            INT 21H 
+                  
+            MOV AH,1h
+            INT 21H
+            MOV BL,AL
+            SUB BL,48 
+            
+             CMP BL,1
+             JE FIVE
+             
+             CMP BL,2
+             JE SEVEN
+            
+             CMP BL,3
+             JE TEN 
+             
+             CMP BL,4
+             JE TEN
+             
+             CMP BL,5
+             JE TWENTY
+             
+             CMP BL,6
+             JE TEN    
               
-        MOV AH,1h
-        INT 21H
-        MOV BL,AL
-        SUB BL,48 
-        
-        CMP BL,1
-        JE FIVE
-        
-        CMP BL,2
-        JE FIVE
-        
-        CMP BL,3
-        JE TEN 
-        
-        CMP BL,4
-        JE TEN
-        
-        CMP BL,5
-        JE TEN
-        
-        CMP BL,6
-        JE TEN
-        
-        
-        JMP INVALID
+            LEA DX,M36
+            MOV AH,9
+            INT 21H 
+                
+                
+            LEA DX,M37 
+            MOV AH,9
+            INT 21H
+            
+            
+            loop EE4
+       
         
 APPETIZERS:
     
