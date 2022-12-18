@@ -398,7 +398,9 @@ MAIN PROC
          loop EE3
 
    Drinks:
-          
+   
+        MOV PRC,0
+        
         LEA DX,M43    
         MOV AH,9h
         INT 21H
