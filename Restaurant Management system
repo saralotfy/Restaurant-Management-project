@@ -572,7 +572,41 @@ APPETIZERS:
         
         JMP INVALID               
                    
-
+    FIVE_DR:
+    
+        mov BL,05h
+        
+        call Calculate
+        
+        JMP REPEAT_DR
+ 
+   
+    SEVEN_DR:
+    
+        mov BL,07h
+        
+        call Calculate
+        
+        JMP REPEAT_DR
+         
+   
+    TEN_DR:
+    
+        mov BL,0Ah
+        
+        call Calculate
+        
+        JMP REPEAT_DR
+    
+    TWENTY_DR:
+    
+        mov BL,14h
+        
+        call Calculate
+        
+        JMP REPEAT_DR
+        
+        
     Calculate: 
      
         LEA DX,M39              
