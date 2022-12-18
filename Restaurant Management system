@@ -623,6 +623,38 @@ APPETIZERS:
         ADD PRC,AX
         
         ret
-
+        
+    REPEAT_DR:
+    
+        LEA DX,M44
+        MOV AH,9h
+        INT 21H
+        
+        MOV AH,1h
+        INT 21H
+        
+        CMP AL,'n'
+        JE PRINTE
+       
+        CMP AL,'N'
+        JE PRINTE
+        
+        CMP AL,'y'
+        JE EE4
+       
+        CMP AL,'Y'
+        JE EE4
+        
+        LEA DX,M36
+        MOV AH,9
+        INT 21H 
+                
+                
+        LEA DX,M37 
+        MOV AH,9
+        INT 21H
+        
+        loop REPEAT_DR
+        
 main endp
 end main
