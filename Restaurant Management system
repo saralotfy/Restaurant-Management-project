@@ -46,10 +46,10 @@ M25 DB 10,13,9,9,32,32,'9.Piccata mushroom        60/-                          
 ;Drinks
 
 M26 DB 10,13,9,9,32,32,'1.Tea                      5/-                               $'
-M27 DB 10,13,9,9,32,32,'2.Turkish caffe            5/-                               $'
+M27 DB 10,13,9,9,32,32,'2.Turkish caffe            7/-                               $'
 M28 DB 10,13,9,9,32,32,'3.Latte caffe             10/-                               $' 
 M29 DB 10,13,9,9,32,32,'4.Cappuccino              10/-                               $'
-M30 DB 10,13,9,9,32,32,'5.Mango smoothy           10/-                               $'
+M30 DB 10,13,9,9,32,32,'5.Mango smoothy           20/-                               $'
 M31 DB 10,13,9,9,32,32,'6.Lemon juice             10/-                               $'
 
 ;APPETIZERS
