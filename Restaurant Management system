@@ -459,22 +459,22 @@ MAIN PROC
             SUB BL,48 
             
              CMP BL,1
-             JE FIVE
+             JE FIVE_DR
              
              CMP BL,2
-             JE SEVEN
+             JE SEVEN_DR
             
              CMP BL,3
-             JE TEN 
+             JE TEN_DR 
              
              CMP BL,4
-             JE TEN
+             JE TEN_DR
              
              CMP BL,5
-             JE TWENTY
+             JE TWENTY_DR
              
              CMP BL,6
-             JE TEN    
+             JE TEN_DR    
               
             LEA DX,M36
             MOV AH,9
