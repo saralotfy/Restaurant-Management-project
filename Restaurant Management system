@@ -360,7 +360,7 @@ MAIN PROC
         LEA DX,MF2
         MOV AH,9h
         INT 21H
-              
+      EE3:         
         LEA DX,M38              
         MOV AH,9h
         INT 21H 
@@ -395,6 +395,7 @@ MAIN PROC
 
         CMP BL,9
         JE SIXTY
+         loop EE3
 
    Drinks:
           
