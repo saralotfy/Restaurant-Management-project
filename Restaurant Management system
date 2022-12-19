@@ -491,7 +491,11 @@ MAIN PROC
             loop EE4
        
         
-APPETIZERS:
+  APPETIZERS: 
+    
+       MOV PRC,0
+    
+    
     
         LEA DX,M7    
         MOV AH,9h
@@ -543,36 +547,142 @@ APPETIZERS:
         LEA DX,MF2
         MOV AH,9h
         INT 21H
-              
-        LEA DX,M38              
-        MOV AH,9h
-        INT 21H 
-              
-        MOV AH,1h
-        INT 21H
-        MOV BL,AL
-        SUB BL,48           
+       
+       EE5:
+             
+            LEA DX,M38              
+            MOV AH,9h
+            INT 21H 
+                  
+            MOV AH,1h
+            INT 21H
+            MOV BL,AL
+            SUB BL,48
+                       
+                       
+                       
+                       
+                       
+            CMP BL,1
+            JE TWENTYAp
+            
+            CMP BL,2
+            JE EIGHTYAp
+            
+            CMP BL,3
+            JE TWENTYAp 
+            
+            CMP BL,4
+            JE TWENTY5Ap
+            
+            CMP BL,5
+            JE THIRTY5Ap
+            
+            CMP BL,6
+            JE THIRTYAp 
+                 
+            LEA DX,M36
+            MOV AH,9
+            INT 21H 
+            
+            
+            LEA DX,M37 
+            MOV AH,9
+            INT 21H 
+            
+            loop EE5
+                       
                    
-        CMP BL,1
-        JE TEN
+                   
+                   
+                   
+                   
+                       
+                       
+     TWENTYAp:
+            
+         mov BL,14h
+                
+         call Calculate             
+         
+         JMP REPEAT_AP
+                            
+                           
+     EIGHTYAp:
+            
+         mov BL,50h
+               
+         call Calculate 
+         
+         JMP REPEAT_AP
+                   
+                         
+     TWENTY5Ap:
+            
+         mov BL,19h 
+                
+         call Calculate 
+               
+         JMP REPEAT_AP  
+              
+               
+     THIRTY5Ap:
+          
+          mov BL,23h
+                
+          call Calculate 
+          
+          JMP REPEAT_AP  
+            
+            
+      THIRTYAp:
         
-        CMP BL,2
-        JE TEN
+          mov BL,1Eh
+            
+          call Calculate 
+                            
+          JMP REPEAT_AP                  
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                
+     REPEAT_AP:
         
-        CMP BL,3
-        JE TEN 
-        
-        CMP BL,4
-        JE TEN
-        
-        CMP BL,5
-        JE TEN
-        
-        CMP BL,6
-        JE TEN
-        
-        
-        JMP INVALID               
+            LEA DX,M44
+            MOV AH,9h
+            INT 21H
+            
+            MOV AH,1h
+            INT 21H
+            
+            CMP AL,'n'
+            JE PRINTE
+           
+            CMP AL,'N'
+            JE PRINTE
+            
+            CMP AL,'y'
+            JE EE5
+           
+            CMP AL,'Y'
+            JE EE5
+            
+            LEA DX,M36
+            MOV AH,9
+            INT 21H 
+                    
+                    
+            LEA DX,M37 
+            MOV AH,9
+            INT 21H
+            
+            loop REPEAT_AP                   
+                            
+                                       
                    
     FIVE_DR:
     
