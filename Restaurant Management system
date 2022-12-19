@@ -1,6 +1,6 @@
 title second : Restaurant-managementproject
+org 100h
 .model large
-.org 100h
 .stack 1000h
 
 .DATA
@@ -20,13 +20,13 @@ M7 DB 10,13,10,13,'>>>>Choose your food from the menu$'
 ;BREAKFAST
   
 M8  DB 10,13,9,9,32,32,'1.Cheese pate             10/-$'
-M9  DB 10,13,9,9,32,32,'2.Croissant               10/-$'
-M10 DB 10,13,9,9,32,32,'3.English cake            10/-$'
-M11 DB 10,13,9,9,32,32,'4.Cold toast              10/-$'
-M12 DB 10,13,9,9,32,32,'5.Omeltte corned beef     20/-$'
-M13 DB 10,13,9,9,32,32,'6.Roomi cheese            20/-$'
-M14 DB 10,13,9,9,32,32,'7.White cheese            10/-$'
-M15 DB 10,13,9,9,32,32,'8.Smoked Turkey           20/-$'
+M9  DB 10,13,9,9,32,32,'2.Croissant               15/-$'
+M10 DB 10,13,9,9,32,32,'3.English cake            20/-$'
+M11 DB 10,13,9,9,32,32,'4.Cold toast              20/-$'
+M12 DB 10,13,9,9,32,32,'5.Omeltte corned beef     30/-$'
+M13 DB 10,13,9,9,32,32,'6.Roomi cheese            40/-$'
+M14 DB 10,13,9,9,32,32,'7.White cheese            15/-$'
+M15 DB 10,13,9,9,32,32,'8.Smoked Turkey           50/-$'
 M16 DB 10,13,9,9,32,32,'9.Club sandwidch          60/-$' 
 
 ;DINNER
@@ -186,7 +186,7 @@ MAIN PROC
         loop EE1      
        
    BREATFAST:
-          
+        MOV PRC,0 
         LEA DX,M7    
         MOV AH,9h
         INT 21H
@@ -260,31 +260,31 @@ MAIN PROC
             SUB BL,48 
             
             CMP BL,1
-            JE TEN
+            JE TEN-B
             
             CMP BL,2
-            JE TEN
+            JE FIFTEEN-B
             
             CMP BL,3
-            JE TEN 
+            JE TWENTY-B 
             
             CMP BL,4
-            JE TEN
+            JE TWINTY-B
             
             CMP BL,5
-            JE TEN
+            JE THIRTY-B
             
             CMP BL,6
-            JE TWENTY
+            JE FOURTY-B
             
             CMP BL,7
-            JE TEN
+            JE FIFTEEN-B
             
             CMP BL,8
-            JE TWENTY 
+            JE FIFTY-B 
             
             CMP BL,9
-            JE SIXTY
+            JE SIXTY-B
         
             
             LEA DX,M36
@@ -297,7 +297,38 @@ MAIN PROC
             INT 21H
             loop EE2
             
-    
+     REPEAT_BR:
+        
+            LEA DX,M44
+            MOV AH,9h
+            INT 21H
+            
+            MOV AH,1h
+            INT 21H
+            
+            CMP AL,'n'
+            JE PRINTE
+           
+            CMP AL,'N'
+            JE PRINTE
+            
+            CMP AL,'y'
+            JE EE2
+           
+            CMP AL,'Y'
+            JE EE2
+            
+            LEA DX,M36
+            MOV AH,9
+            INT 21H 
+                    
+                    
+            LEA DX,M37 
+            MOV AH,9
+            INT 21H
+            
+            loop REPEAT_BR                   
+                            
         
   DINNER:
           
