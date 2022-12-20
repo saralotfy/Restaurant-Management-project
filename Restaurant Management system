@@ -401,31 +401,31 @@ MAIN PROC
         MOV BL,AL
         SUB BL,48      
         CMP BL,1
-        JE SIXTY
+        JE SIXTY-DI
 
         CMP BL,2
-        JE EIGHTY
+        JE EIGHTY-DI
 
         CMP BL,3
-        JE EIGHTY 
+        JE EIGHTY-DI 
 
         CMP BL,4
-        JE FOURTY
+        JE FOURTY-DI
 
         CMP BL,5
-        JE FIFTY
+        JE FIFTY-DI
 
         CMP BL,6
-        JE SEVENTY
+        JE SEVENTY-DI
 
         CMP BL,7
-        JE SIXTY
+        JE SIXTY-DI
 
         CMP BL,8
-        JE SIXTY 
+        JE SIXTY-DI 
 
         CMP BL,9
-        JE SIXTY
+        JE SIXTY-DI
          loop EE3
           REPEAT_DI:
         
