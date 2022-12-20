@@ -743,8 +743,46 @@ MAIN PROC
             MOV AH,9
             INT 21H
             
-            loop REPEAT_AP                   
-                            
+            loop REPEAT_AP    
+            
+    SIXITY-DI:
+     mov BL,3Ch
+        
+        call Calculate
+        
+        JMP REPEAT_DI
+        
+    SIVENTY-DI    
+      mov BL,46h
+        call Calculate
+        
+        JMP REPEAT_DI
+        
+     FOURTY-DI:
+      mov BL,28h
+        
+        call Calculate
+        
+        JMP REPEAT_DI
+      
+      FIFTY-DI:
+       mov BL,32h
+        
+        call Calculate
+        
+        JMP REPEAT_DI
+        
+         EIGHTY-DI:
+       mov BL,50h
+        
+        call Calculate
+        
+        JMP REPEAT_DI
+ 
+ 
+ 
+    
+ 
                                        
                    
     FIVE_DR:
