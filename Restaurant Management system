@@ -92,11 +92,11 @@ MF2 DB 10,13,32,32,32,32,32,32,'------------------------------------------------
  
 NEWLINE DB 10,13,10,13,' $'
 
-
-SN1 DB ?
+;Variables
+SN1 DB ?    ;save number 
 SN2 DB ?
 
-PRC DW ?
+PRC DW ?    ;price
 
 .CODE
 MAIN PROC
@@ -147,7 +147,7 @@ MAIN PROC
     INT 21H
      
     
-   EE1:
+    EE1:
     
         LEA DX,NEWLINE
         MOV AH,9h
@@ -184,8 +184,10 @@ MAIN PROC
         INT 21H
         
         loop EE1      
-       
+   
+   
    BREATFAST:
+   
         MOV PRC,0 
         LEA DX,M7    
         MOV AH,9h
@@ -247,7 +249,7 @@ MAIN PROC
         MOV AH,9h
         INT 21H
               
-         EE2:
+        EE2:
         
             LEA DX,M38              
             MOV AH,9h
@@ -296,42 +298,13 @@ MAIN PROC
             MOV AH,9
             INT 21H
             loop EE2
-            
-     REPEAT_BR:
-        
-            LEA DX,M44
-            MOV AH,9h
-            INT 21H
-            
-            MOV AH,1h
-            INT 21H
-            
-            CMP AL,'n'
-            JE PRINTE
-           
-            CMP AL,'N'
-            JE PRINTE
-            
-            CMP AL,'y'
-            JE EE2
-           
-            CMP AL,'Y'
-            JE EE2
-            
-            LEA DX,M36
-            MOV AH,9
-            INT 21H 
-                    
-                    
-            LEA DX,M37 
-            MOV AH,9
-            INT 21H
-            
-            loop REPEAT_BR                   
+                               
                             
         
   DINNER:
           
+        MOV PRC,0
+        
         LEA DX,M7    
         MOV AH,9h
         INT 21H
@@ -391,74 +364,45 @@ MAIN PROC
         LEA DX,MF2
         MOV AH,9h
         INT 21H
-      EE3:         
-        LEA DX,M38              
-        MOV AH,9h
-        INT 21H 
-              
-        MOV AH,1h
-        INT 21H
-        MOV BL,AL
-        SUB BL,48      
-        CMP BL,1
-        JE SIXTY-DI
+        EE3:         
+          LEA DX,M38              
+          MOV AH,9h
+          INT 21H 
 
-        CMP BL,2
-        JE EIGHTY-DI
+          MOV AH,1h
+          INT 21H
+          MOV BL,AL
+          SUB BL,48      
+          
+          CMP BL,1
+          JE SIXTY-DI
 
-        CMP BL,3
-        JE EIGHTY-DI 
+          CMP BL,2
+          JE EIGHTY-DI
 
-        CMP BL,4
-        JE FOURTY-DI
+          CMP BL,3
+          JE EIGHTY-DI 
 
-        CMP BL,5
-        JE FIFTY-DI
+          CMP BL,4
+          JE FOURTY-DI
 
-        CMP BL,6
-        JE SEVENTY-DI
+          CMP BL,5
+          JE FIFTY-DI
 
-        CMP BL,7
-        JE SIXTY-DI
+          CMP BL,6
+          JE SEVENTY-DI
 
-        CMP BL,8
-        JE SIXTY-DI 
+          CMP BL,7
+          JE SIXTY-DI
 
-        CMP BL,9
-        JE SIXTY-DI
-         loop EE3
-          REPEAT_DI:
-        
-            LEA DX,M44
-            MOV AH,9h
-            INT 21H
-            
-            MOV AH,1h
-            INT 21H
-            
-            CMP AL,'n'
-            JE PRINTE
+          CMP BL,8
+          JE SIXTY-DI 
+
+          CMP BL,9
+          JE SIXTY-DI
+           loop EE3      
            
-            CMP AL,'N'
-            JE PRINTE
-            
-            CMP AL,'y'
-            JE EE3
-           
-            CMP AL,'Y'
-            JE EE3
-            
-            LEA DX,M36
-            MOV AH,9
-            INT 21H 
-                    
-                    
-            LEA DX,M37 
-            MOV AH,9
-            INT 21H
-            
-            loop REPEAT_DI                   
-     
+      
 
    Drinks:
    
@@ -558,8 +502,6 @@ MAIN PROC
     
        MOV PRC,0
     
-    
-    
         LEA DX,M7    
         MOV AH,9h
         INT 21H
@@ -620,11 +562,7 @@ MAIN PROC
             MOV AH,1h
             INT 21H
             MOV BL,AL
-            SUB BL,48
-                       
-                       
-                       
-                       
+            SUB BL,48                   
                        
             CMP BL,1
             JE TWENTYAp
@@ -653,138 +591,42 @@ MAIN PROC
             MOV AH,9
             INT 21H 
             
-            loop EE5
-                       
-                   
-                   
-                   
+            loop EE5          
                    
                    
                        
                        
-     TWENTYAp:
-            
-         mov BL,14h
-                
-         call Calculate             
-         
-         JMP REPEAT_AP
-                            
-                           
-     EIGHTYAp:
-            
-         mov BL,50h
-               
-         call Calculate 
-         
-         JMP REPEAT_AP
-                   
-                         
-     TWENTY5Ap:
-            
-         mov BL,19h 
-                
-         call Calculate 
-               
-         JMP REPEAT_AP  
-              
-               
-     THIRTY5Ap:
-          
-          mov BL,23h
-                
-          call Calculate 
-          
-          JMP REPEAT_AP  
-            
-            
-      THIRTYAp:
-        
-          mov BL,1Eh
-            
-          call Calculate 
-                            
-          JMP REPEAT_AP                  
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                                
-     REPEAT_AP:
-        
-            LEA DX,M44
-            MOV AH,9h
-            INT 21H
-            
-            MOV AH,1h
-            INT 21H
-            
-            CMP AL,'n'
-            JE PRINTE
-           
-            CMP AL,'N'
-            JE PRINTE
-            
-            CMP AL,'y'
-            JE EE5
-           
-            CMP AL,'Y'
-            JE EE5
-            
-            LEA DX,M36
-            MOV AH,9
-            INT 21H 
-                    
-                    
-            LEA DX,M37 
-            MOV AH,9
-            INT 21H
-            
-            loop REPEAT_AP    
-            
+     
     SIXITY-DI:
-     mov BL,3Ch
-        
+        mov BL,3Ch
         call Calculate
-        
         JMP REPEAT_DI
         
     SIVENTY-DI    
-      mov BL,46h
+        mov BL,46h
         call Calculate
-        
         JMP REPEAT_DI
         
-     FOURTY-DI:
-      mov BL,28h
-        
+    FOURTY-DI:
+        mov BL,28h
         call Calculate
-        
         JMP REPEAT_DI
       
-      FIFTY-DI:
+    FIFTY-DI:
        mov BL,32h
         
         call Calculate
         
         JMP REPEAT_DI
         
-         EIGHTY-DI:
+    EIGHTY-DI:
        mov BL,50h
         
         call Calculate
         
         JMP REPEAT_DI
- 
- 
- 
-    
- 
-                                       
-                   
+     
+     
     FIVE_DR:
     
         mov BL,05h
@@ -794,6 +636,7 @@ MAIN PROC
         JMP REPEAT_DR
  
    
+    
     SEVEN_DR:
     
         mov BL,07h
@@ -818,6 +661,60 @@ MAIN PROC
         call Calculate
         
         JMP REPEAT_DR
+    
+    
+    
+    
+    TWENTYAp:
+            
+         mov BL,14h
+                
+         call Calculate             
+         
+         JMP REPEAT_AP
+                            
+                           
+    EIGHTYAp:
+            
+         mov BL,50h
+               
+         call Calculate 
+         
+         JMP REPEAT_AP
+                   
+                         
+    TWENTY5Ap:
+            
+         mov BL,19h 
+                
+         call Calculate 
+               
+         JMP REPEAT_AP  
+              
+               
+    THIRTY5Ap:
+          
+          mov BL,23h
+                
+          call Calculate 
+          
+          JMP REPEAT_AP  
+            
+            
+    THIRTYAp:
+        
+          mov BL,1Eh
+            
+          call Calculate 
+                            
+          JMP REPEAT_AP                  
+                            
+                            
+            
+   
+ 
+
+
         
         
     Calculate: 
@@ -837,6 +734,72 @@ MAIN PROC
         
         ret
         
+    REPEAT_BR:
+        
+            LEA DX,M44
+            MOV AH,9h
+            INT 21H
+            
+            MOV AH,1h
+            INT 21H
+            
+            CMP AL,'n'
+            JE PRINTE
+           
+            CMP AL,'N'
+            JE PRINTE
+            
+            CMP AL,'y'
+            JE EE2
+           
+            CMP AL,'Y'
+            JE EE2
+            
+            LEA DX,M36
+            MOV AH,9
+            INT 21H 
+                    
+                    
+            LEA DX,M37 
+            MOV AH,9
+            INT 21H
+            
+            loop REPEAT_BR    
+    
+    REPEAT_DI:
+        
+            LEA DX,M44
+            MOV AH,9h
+            INT 21H
+            
+            MOV AH,1h
+            INT 21H
+            
+            CMP AL,'n'
+            JE PRINTE
+           
+            CMP AL,'N'
+            JE PRINTE
+            
+            CMP AL,'y'
+            JE EE3
+           
+            CMP AL,'Y'
+            JE EE3
+            
+            LEA DX,M36
+            MOV AH,9
+            INT 21H 
+                    
+                    
+            LEA DX,M37 
+            MOV AH,9
+            INT 21H
+            
+            loop REPEAT_DI 
+    
+    
+    
     REPEAT_DR:
     
         LEA DX,M44
@@ -869,6 +832,40 @@ MAIN PROC
         
         loop REPEAT_DR
       
+    
+    REPEAT_AP:
+        
+            LEA DX,M44
+            MOV AH,9h
+            INT 21H
+            
+            MOV AH,1h
+            INT 21H
+            
+            CMP AL,'n'
+            JE PRINTE
+           
+            CMP AL,'N'
+            JE PRINTE
+            
+            CMP AL,'y'
+            JE EE5
+           
+            CMP AL,'Y'
+            JE EE5
+            
+            LEA DX,M36
+            MOV AH,9
+            INT 21H 
+                    
+                    
+            LEA DX,M37 
+            MOV AH,9
+            INT 21H
+            
+            loop REPEAT_AP  
+    
+    
     PRINTE:    
         
         mov bx,64h
