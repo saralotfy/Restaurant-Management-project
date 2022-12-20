@@ -427,6 +427,38 @@ MAIN PROC
         CMP BL,9
         JE SIXTY
          loop EE3
+          REPEAT_DI:
+        
+            LEA DX,M44
+            MOV AH,9h
+            INT 21H
+            
+            MOV AH,1h
+            INT 21H
+            
+            CMP AL,'n'
+            JE PRINTE
+           
+            CMP AL,'N'
+            JE PRINTE
+            
+            CMP AL,'y'
+            JE EE3
+           
+            CMP AL,'Y'
+            JE EE3
+            
+            LEA DX,M36
+            MOV AH,9
+            INT 21H 
+                    
+                    
+            LEA DX,M37 
+            MOV AH,9
+            INT 21H
+            
+            loop REPEAT_DI                   
+     
 
    Drinks:
    
