@@ -868,6 +868,107 @@ MAIN PROC
         INT 21H
         
         loop REPEAT_DR
+      
+    PRINTE:    
         
+        mov bx,64h
+        
+        MOV AX,PRC
+        
+        div bl
+        
+        mov SN1,ah
+        mov SN2,al
+        
+        LEA DX,M40              
+        MOV AH,9
+        INT 21H
+        
+        mov al,SN2
+        
+        mov bh,0ah
+        
+        mov cx,2h
+
+        print:     
+        
+            mov bh,0ah
+            
+            mov ah,0
+            div bh
+            
+            
+            
+            MOV DL,al
+            mov dh,ah
+            
+            
+            
+            MOV AH,2
+            add dl,48
+            INT 21H
+             
+            
+            MOV AH,2
+            MOV DL,dh
+            mov dh,0
+            
+            add dl,48
+            
+            INT 21H
+             
+            mov al,SN1
+            
+            
+            loop print 
+        
+        ;FOR LE PRINT
+        
+        LEA DX,MU
+        MOV AH,9
+        INT 21H 
+         
+        EE6:
+          
+            ;GO BACK TO the MAIN MENU 
+            
+            LEA DX,M41
+            MOV AH,9
+            INT 21H 
+              
+            ;EXIT 
+            
+            LEA DX,M42
+            MOV AH,9
+            INT 21H
+            
+            LEA DX,M2
+            MOV AH,9
+            INT 21H 
+            
+            MOV AH,1
+            INT 21H          
+            SUB AL,48
+            
+            
+            
+            CMP AL,1
+            JE TOP
+            
+            CMP AL,2
+            JE EXIT 
+            
+            
+            LEA DX,M36
+            MOV AH,9
+            INT 21H 
+                    
+                    
+            LEA DX,M37 
+            MOV AH,9
+            INT 21H 
+            loop EE6      
+      
+      
 main endp
 end main
