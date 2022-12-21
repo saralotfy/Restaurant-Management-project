@@ -662,7 +662,7 @@ MAIN PROC
         call Calculate
         JMP REPEAT_DI
         
-    SIVENTY-DI    
+    SEVENTY-DI    
         mov BL,46h
         call Calculate
         JMP REPEAT_DI
