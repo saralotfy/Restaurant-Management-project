@@ -657,7 +657,7 @@ MAIN PROC
                        
                        
      
-    SIXITY-DI:
+    SIXTY-DI:
         mov BL,3Ch
         call Calculate
         JMP REPEAT_DI
