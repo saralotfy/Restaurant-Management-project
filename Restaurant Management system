@@ -268,7 +268,7 @@ MAIN PROC
             JE FIFTEEN-B
             
             CMP BL,3
-            JE TWENTY-B 
+            JE TWINTY-B 
             
             CMP BL,4
             JE TWINTY-B
