@@ -298,68 +298,7 @@ MAIN PROC
             MOV AH,9
             INT 21H
             loop EE2
-                               
-      TEN-B:
-            
-         mov BL,0Ah
-                
-         call Calculate             
-         
-         JMP REPEAT_BR
-                            
-                           
-     FIFTEEN-B:
-            
-         mov BL,0Fh
-               
-         call Calculate 
-         
-         JMP REPEAT_BR
-                   
-                         
-    TWINTY-B:
-            
-         mov BL,14h 
-                
-         call Calculate 
-               
-         JMP REPEAT_BR  
-                       
-            
-    THIRTY-B:
-        
-          mov BL,1Eh
-            
-          call Calculate 
-                            
-          JMP REPEAT_BR                  
-                            
-                            
-     FOURTY-B:
-          
-          mov BL,28h
-                
-          call Calculate 
-          
-          JMP REPEAT_BR 
-          
-          
-      FIFTY-B:
-          
-          mov BL,32h
-                
-          call Calculate 
-          
-          JMP REPEAT_BR 
-      
-      SIXTY-B:
-          
-          mov BL,3Ch
-                
-          call Calculate 
-          
-          JMP REPEAT_BR                       
-                                                  
+                                    
         
   DINNER:
           
@@ -652,10 +591,68 @@ MAIN PROC
             INT 21H 
             
             loop EE5          
+                                         
+       TEN-B:
+            
+         mov BL,0Ah
+                
+         call Calculate             
+         
+         JMP REPEAT_BR
+                            
+                           
+     FIFTEEN-B:
+            
+         mov BL,0Fh
+               
+         call Calculate 
+         
+         JMP REPEAT_BR
                    
-                   
+                         
+    TWINTY-B:
+            
+         mov BL,14h 
+                
+         call Calculate 
+               
+         JMP REPEAT_BR  
                        
-                       
+            
+    THIRTY-B:
+        
+          mov BL,1Eh
+            
+          call Calculate 
+                            
+          JMP REPEAT_BR                  
+                            
+                            
+     FOURTY-B:
+          
+          mov BL,28h
+                
+          call Calculate 
+          
+          JMP REPEAT_BR 
+          
+          
+      FIFTY-B:
+          
+          mov BL,32h
+                
+          call Calculate 
+          
+          JMP REPEAT_BR 
+      
+      SIXTY-B:
+          
+          mov BL,3Ch
+                
+          call Calculate 
+          
+          JMP REPEAT_BR                       
+                                                          
      
     SIXTY-DI:
         mov BL,3Ch
