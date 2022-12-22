@@ -279,28 +279,28 @@ MAIN PROC
             JE TEN-B
             
             CMP BL,2
-            JE FIFTEEN-B
+            JE FIFTEEN_B
             
             CMP BL,3
-            JE TWINTY-B 
+            JE TWINTY_B 
             
             CMP BL,4
-            JE TWINTY-B
+            JE TWINTY_B
             
             CMP BL,5
-            JE THIRTY-B
+            JE THIRTY_B
             
             CMP BL,6
-            JE FOURTY-B
+            JE FOURTY_B
             
             CMP BL,7
-            JE FIFTEEN-B
+            JE FIFTEEN_B
             
             CMP BL,8
-            JE FIFTY-B 
+            JE FIFTY_B 
             
             CMP BL,9
-            JE SIXTY-B
+            JE SIXTY_B
         
             
             LEA DX,M36
@@ -388,31 +388,31 @@ MAIN PROC
           SUB BL,48      
           
           CMP BL,1
-          JE SIXTY-DI
+          JE SIXTY_DI
 
           CMP BL,2
-          JE EIGHTY-DI
+          JE EIGHTY_DI
 
           CMP BL,3
-          JE EIGHTY-DI 
+          JE EIGHTY_DI 
 
           CMP BL,4
-          JE FOURTY-DI
+          JE FOURTY_DI
 
           CMP BL,5
-          JE FIFTY-DI
+          JE FIFTY_DI
 
           CMP BL,6
-          JE SEVENTY-DI
+          JE SEVENTY_DI
 
           CMP BL,7
-          JE SIXTY-DI
+          JE SIXTY_DI
 
           CMP BL,8
-          JE SIXTY-DI 
+          JE SIXTY_DI 
 
           CMP BL,9
-          JE SIXTY-DI
+          JE SIXTY_DI
            loop EE3      
            
       
@@ -606,7 +606,7 @@ MAIN PROC
             
             loop EE5          
                                          
-     TEN-B:
+     TEN_B:
             
          mov BL,0Ah
                 
@@ -615,7 +615,7 @@ MAIN PROC
          JMP REPEAT_BR
                             
                            
-     FIFTEEN-B:
+     FIFTEEN_B:
             
          mov BL,0Fh
                
@@ -624,7 +624,7 @@ MAIN PROC
          JMP REPEAT_BR
                    
                          
-    TWINTY-B:
+    TWINTY_B:
             
          mov BL,14h 
                 
@@ -633,7 +633,7 @@ MAIN PROC
          JMP REPEAT_BR  
                        
             
-    THIRTY-B:
+    THIRTY_B:
         
           mov BL,1Eh
             
@@ -642,7 +642,7 @@ MAIN PROC
           JMP REPEAT_BR                  
                             
                             
-     FOURTY-B:
+     FOURTY_B:
           
           mov BL,28h
                 
@@ -651,7 +651,7 @@ MAIN PROC
           JMP REPEAT_BR 
           
           
-      FIFTY-B:
+      FIFTY_B:
           
           mov BL,32h
                 
@@ -659,7 +659,7 @@ MAIN PROC
           
           JMP REPEAT_BR 
       
-      SIXTY-B:
+      SIXTY_B:
           
           mov BL,3Ch
                 
@@ -668,29 +668,29 @@ MAIN PROC
           JMP REPEAT_BR                       
                                                           
      
-    SIXTY-DI:
+    SIXTY_DI:
         mov BL,3Ch
         call Calculate
         JMP REPEAT_DI
         
-    SEVENTY-DI :   
+    SEVENTY_DI :   
         mov BL,46h
         call Calculate
         JMP REPEAT_DI
         
-    FOURTY-DI:
+    FOURTY_DI:
         mov BL,28h
         call Calculate
         JMP REPEAT_DI
       
-    FIFTY-DI:
+    FIFTY_DI:
        mov BL,32h
         
         call Calculate
         
         JMP REPEAT_DI
         
-    EIGHTY-DI:
+    EIGHTY_DI:
        mov BL,50h
         
         call Calculate
