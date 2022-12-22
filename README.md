@@ -362,9 +362,17 @@ If the user enters any character from "1" to "9", the program will jump to the p
 
 - the output for this function will be as follow :
 
-<img src="https://user-images.githubusercontent.com/66775209/209221058-c79d9d0a-fd9b-441f-aec4-2fa5873a1cc3.png" width="50%">
+<img src="https://user-images.githubusercontent.com/66775209/209224873-e15057c4-4247-4aa3-9680-a7e8ef9e4ea5.png" width="50%">
 
 
+IF the user enters any character except these characters ,the program will show this until he enters a right character :
+
+
+<img src="https://user-images.githubusercontent.com/66775209/209226729-cedb3815-e7e3-4a9f-ac2a-2c2224a85f9a.png" width="50%">
+
+### NOTE
+
+- the steps of code in breakfast is applied also in dinner,drinks and Appetizer
 
 
 
