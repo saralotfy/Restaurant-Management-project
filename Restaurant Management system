@@ -276,7 +276,7 @@ MAIN PROC
             SUB BL,48 
             
             CMP BL,1
-            JE TEN-B
+            JE TEN_B
             
             CMP BL,2
             JE FIFTEEN_B
