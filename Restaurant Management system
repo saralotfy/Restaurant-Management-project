@@ -7,12 +7,12 @@ org 100h
 
 M1 DB 10,13,10,13,9,9,9,32,'>>>>Welcome to Our Restaurant<<<<$',10,13
  
-M2 DB 10,13,10,13,'>>>>Enter your Choise $'
+M2 DB 10,13,10,13,'>>>>Enter your Choice $'
 
-M3 DB 10,13,9,9,9,9,32,32,32,'1.Breakfast Menue$' 
-M4 DB 10,13,9,9,9,9,32,32,32,'2.Dinner Menue   $'
-M5 DB 10,13,9,9,9,9,32,32,32,'3.Appetizers     $'
-M6 DB 10,13,9,9,9,9,32,32,32,'4.Drinks         $'  
+M3 DB 10,13,9,9,9,9,32,32,32,'1.Breakfast Menu$' 
+M4 DB 10,13,9,9,9,9,32,32,32,'2.Dinner Menu   $'
+M5 DB 10,13,9,9,9,9,32,32,32,'3.Appetizers    $'
+M6 DB 10,13,9,9,9,9,32,32,32,'4.Drinks        $'  
                
                
 M7 DB 10,13,10,13,'>>>>Choose your food from the menu$' 
@@ -31,35 +31,35 @@ M16 DB 10,13,9,9,32,32,'9.Club sandwidch          60/-$'
 
 ;DINNER
 
-M17 DB 10,13,9,9,32,32,'1.Pasta chicken           60/-                               $'
-M18 DB 10,13,9,9,32,32,'2.Salmon marmed           80/-                               $'
-M19 DB 10,13,9,9,32,32,'3.Grilled chicken         80/-                               $' 
-M20 DB 10,13,9,9,32,32,'4.Pasta red               40/-                               $'
-M21 DB 10,13,9,9,32,32,'5.Chicken alfredo         50/-                               $'
-M22 DB 10,13,9,9,32,32,'6.Shrimp pasta            70/-                               $'
-M23 DB 10,13,9,9,32,32,'7.Meat balls              60/-                               $'
-M24 DB 10,13,9,9,32,32,'8.Crust pizza             60/-                               $'
-M25 DB 10,13,9,9,32,32,'9.Piccata mushroom        60/-                               $'  
+M17 DB 10,13,9,9,32,32,'1.Pasta chicken           60/-$'
+M18 DB 10,13,9,9,32,32,'2.Salmon marmed           80/-$'
+M19 DB 10,13,9,9,32,32,'3.Grilled chicken         80/-$' 
+M20 DB 10,13,9,9,32,32,'4.Pasta red               40/-$'
+M21 DB 10,13,9,9,32,32,'5.Chicken alfredo         50/-$'
+M22 DB 10,13,9,9,32,32,'6.Shrimp pasta            70/-$'
+M23 DB 10,13,9,9,32,32,'7.Meat balls              60/-$'
+M24 DB 10,13,9,9,32,32,'8.Crust pizza             60/-$'
+M25 DB 10,13,9,9,32,32,'9.Piccata mushroom        60/-$'  
 
  
 
 ;Drinks
 
-M26 DB 10,13,9,9,32,32,'1.Tea                      5/-                               $'
-M27 DB 10,13,9,9,32,32,'2.Turkish caffe            7/-                               $'
-M28 DB 10,13,9,9,32,32,'3.Latte caffe             10/-                               $' 
-M29 DB 10,13,9,9,32,32,'4.Cappuccino              10/-                               $'
-M30 DB 10,13,9,9,32,32,'5.Mango smoothy           20/-                               $'
-M31 DB 10,13,9,9,32,32,'6.Lemon juice             10/-                               $'
+M26 DB 10,13,9,9,32,32,'1.Tea                      5/-$'
+M27 DB 10,13,9,9,32,32,'2.Turkish caffe            7/-$'
+M28 DB 10,13,9,9,32,32,'3.Latte caffe             10/-$' 
+M29 DB 10,13,9,9,32,32,'4.Cappuccino              10/-$'
+M30 DB 10,13,9,9,32,32,'5.Mango smoothy           20/-$'
+M31 DB 10,13,9,9,32,32,'6.Lemon juice             10/-$'
 
 ;APPETIZERS
 
-M32 DB 10,13,9,9,32,32,'1.Spring rool                20/-                                       $'
-M33 DB 10,13,9,9,32,32,'2.Shrimp kunafa              80/-                                       $'
-M34 DB 10,13,9,9,32,32,'3.Onion rings                20/-                                       $'
-M35 DB 10,13,9,9,32,32,'4.Gartin potato              25/-                                       $' 
-M45 DB 10,13,9,9,32,32,'5-Buffalo Chicken Wings      35/-                                       $' 
-M46 DB 10,13,9,9,32,32,'6-Mozzarella stick           30/-                                       $' 
+M32 DB 10,13,9,9,32,32,'1.Spring rool                20/-$'
+M33 DB 10,13,9,9,32,32,'2.Shrimp kunafa              80/-$'
+M34 DB 10,13,9,9,32,32,'3.Onion rings                20/-$'
+M35 DB 10,13,9,9,32,32,'4.Gartin potato              25/-$' 
+M45 DB 10,13,9,9,32,32,'5-Buffalo Chicken Wings      35/-$' 
+M46 DB 10,13,9,9,32,32,'6-Mozzarella stick           30/-$' 
 
 ;INVALID 
 
@@ -99,10 +99,25 @@ SN2 DB ?
 PRC DW ?    ;price
 
 .CODE
+
 MAIN PROC
 
     MOV AX,@DATA
     MOV DS,AX
+    
+    MOV AH, 06h    
+    XOR AL, AL     
+    XOR CX, CX     
+    MOV DX, 184FH  
+    MOV BH, 01110000b    
+    INT 10H
+    
+    MOV AH, 06h    
+    XOR AL, AL     
+    mov cx,0219h    
+    MOV DX, 0239H  
+    MOV BH, 11110000b    
+    INT 10H
     
   TOP:
   
@@ -117,10 +132,10 @@ MAIN PROC
     LEA DX,MF1
     MOV AH,9h
     INT 21H
-       
-    LEA DX,MF1
+    
+    LEA DX,NEWLINE
     MOV AH,9h
-    INT 21H  
+    INT 21H           
         
     LEA DX,M3
     MOV AH,9h
@@ -137,15 +152,14 @@ MAIN PROC
     LEA DX,M6
     MOV AH,9h
     INT 21H
-       
+
+    LEA DX,NEWLINE
+    MOV AH,9h
+    INT 21H  
+
     LEA DX,MF1
     MOV AH,9h
     INT 21H
-    
-    LEA DX,MF1
-    MOV AH,9h
-    INT 21H
-     
     
     EE1:
     
@@ -592,7 +606,7 @@ MAIN PROC
             
             loop EE5          
                                          
-       TEN-B:
+     TEN-B:
             
          mov BL,0Ah
                 
