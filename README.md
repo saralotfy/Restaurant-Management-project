@@ -167,6 +167,204 @@ This is implemented using loop :
  
  loop EE1
 ~~~
+when the user enters "1" the menu of the breakfast will appear .
 
+this menu  was written as below :
+~~~
+BREAKFAST:
+   
+        MOV PRC,0 
+        LEA DX,M7    
+        MOV AH,9h
+        INT 21H
+        
+        LEA DX,NEWLINE 
+        MOV AH,9h
+        INT 21H
+        
+        LEA DX,MF2
+        MOV AH,9h
+        INT 21H
+               
+        LEA DX,MF2
+        MOV AH,9h
+        INT 21H
+              
+        LEA DX,M8    
+        MOV AH,9h
+        INT 21H 
+                
+        LEA DX,M9  
+        MOV AH,9h
+        INT 21H
+        
+        LEA DX,M10
+        MOV AH,9h          
+        INT 21H 
+        
+        LEA DX,M11
+        MOV AH,9h           
+        INT 21H
+                
+        LEA DX,M12         
+        MOV AH,9h
+        INT 21H
+               
+        LEA DX,M13     
+        MOV AH,9h
+        INT 21H 
+                        
+        LEA DX,M14
+        MOV AH,9h           
+        INT 21H
+                                
+        LEA DX,M15        
+        MOV AH,9h
+        INT 21H 
+        
+        LEA DX,M16         
+        MOV AH,9h
+        INT 21H
+               
+        LEA DX,MF2
+        MOV AH,9h
+        INT 21H
+        
+        LEA DX,MF2
+        MOV AH,9h
+        INT 21H
+   ~~~
+        
+this label will print the menu of the breakfast:
 
+<img src="https://user-images.githubusercontent.com/66775209/209193153-21d4bf64-00c7-451c-9cc8-ab95aefa4c13.png" width="50%">
+
+~~~
+ EE2:
+        
+            LEA DX,M38              
+            MOV AH,9h
+            INT 21H 
+            MOV AH,1h
+            INT 21H
+            MOV BL,AL
+            SUB BL,48 
+            
+            CMP BL,1
+            JE TEN-B
+            
+            CMP BL,2
+            JE FIFTEEN-B
+            
+            CMP BL,3
+            JE TWINTY-B 
+            
+            CMP BL,4
+            JE TWINTY-B
+            
+            CMP BL,5
+            JE THIRTY-B
+            
+            CMP BL,6
+            JE FOURTY-B
+            
+            CMP BL,7
+            JE FIFTEEN-B
+            
+            CMP BL,8
+            JE FIFTY-B 
+            
+            CMP BL,9
+            JE SIXTY-B
+             
+
+~~~
  
+
+
+If the user enters any character from "1" to "9", the program will jump to the price label of this order 
+
+~~~
+          TEN-B:
+            
+         mov BL,0Ah
+                
+         call Calculate             
+         
+         JMP REPEAT_BR
+~~~                        
+
+- mov BL,0Ah   " the price of the order is put in BL register"
+- then the program will call the function "calculate" to ask for the quantity 
+- label  REPEAT_BR  "to ask for another order from the user"
+~~~
+      Calculate: 
+     
+        LEA DX,M39              
+        MOV AH,9
+        INT 21H 
+           
+        MOV AH,1
+        INT 21H
+        SUB AL,48
+        mov ah,00          
+        
+        MUL BL
+        
+        ADD PRC,AX
+        
+        ret
+~~~
+
+- first the program ask for the quantity 
+
+- then calculate the price and store it in PRC variable 
+
+- then return to  REPEAT_BR label 
+
+~~~
+ REPEAT_BR:
+        
+            LEA DX,M44
+            MOV AH,9h
+            INT 21H
+            
+            MOV AH,1h
+            INT 21H
+            
+            CMP AL,'n'
+            JE PRINTE
+           
+            CMP AL,'N'
+            JE PRINTE
+            
+            CMP AL,'y'
+            JE EE2
+           
+            CMP AL,'Y'
+            JE EE2
+            
+            LEA DX,M36
+            MOV AH,9
+            INT 21H 
+                    
+                    
+            LEA DX,M37 
+            MOV AH,9
+            INT 21H
+            
+            loop REPEAT_BR    
+ ~~~
+- the program ask the user if he need another order 
+- if the user enter "n" or "N" then the total price will be print
+- if the user enter "y" or "Y" then label IEE will be repeated TO take the order from the user
+ 
+
+- the output for this function will be as follow :
+
+<img src="https://user-images.githubusercontent.com/66775209/209221058-c79d9d0a-fd9b-441f-aec4-2fa5873a1cc3.png" width="50%">
+
+
+
+
+
