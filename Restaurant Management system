@@ -1,6 +1,6 @@
 title second : Restaurant-managementproject
 org 100h
-.model large
+.model small
 .stack 1000h
 
 .DATA
