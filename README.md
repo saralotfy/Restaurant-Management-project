@@ -58,3 +58,64 @@ SN2 DB ?
 PRC DW ? 
 ~~~
 The "?" symbol is used  for variables that are not initialized. 
+~~~
+.CODE
+MAIN PROC
+    MOV AX,@DATA
+    MOV DS,AX
+~~~
+ "MOV AX,@DATA" is the first line of code that gets run. @DATA is a variable that holds the value of the location in memory where the data segment is. 
+ It moves the memory location of @DATA into the AX register."MOV DS,AX" will then set that memory location in the data segment register DS .
+ 
+### To print string :
+-Create a string , the string must be terminated by ‘$’ sign.
+
+-Load the effective address of the string in dx using LEA command.
+
+-Print the string by calling the interrupt with 9H in AH.
+
+ ~~~ 
+  TOP:
+  
+    LEA DX,M1
+    MOV AH,9h
+    INT 21H
+    
+    LEA DX,NEWLINE 
+    MOV AH,9h
+    INT 21H
+    
+    LEA DX,MF1
+    MOV AH,9h
+    INT 21H
+       
+    LEA DX,MF1
+    MOV AH,9h
+    INT 21H  
+        
+    LEA DX,M3
+    MOV AH,9h
+    INT 21H
+    
+    LEA DX,M4
+    MOV AH,9h
+    INT 21H
+    
+    LEA DX,M5
+    MOV AH,9h
+    INT 21H
+    
+    LEA DX,M6
+    MOV AH,9h
+    INT 21H
+       
+    LEA DX,MF1
+    MOV AH,9h
+    INT 21H
+    
+    LEA DX,MF1
+    MOV AH,9h
+    INT 21H
+ ~~~
+   
+   This label will print the menu that will first appear when the program is run
