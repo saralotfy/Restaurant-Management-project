@@ -116,6 +116,57 @@ MAIN PROC
     LEA DX,MF1
     MOV AH,9h
     INT 21H
+    
+     LEA DX,NEWLINE
+     MOV AH,9h
+     INT 21H
+     
+     LEA DX,M2
+     MOV AH,9h
+     INT 21H    
  ~~~
    
-   This label will print the menu that will first appear when the program is run
+   This label will print the menu that will first appear when the program is run as follows :
+   
+   <img src="https://user-images.githubusercontent.com/66350581/209178345-8f4e7fff-79fc-4aea-afcc-69aabae7cdff.png" width="50%">
+   
+To get an input from the user we use this instructions:  
+ ~~~
+    MOV AH,1h
+    INT 21H
+    MOV BH,AL
+    SUB BH,48
+ ~~~ 
+ 
+ ~~~
+  CMP BH,1
+  JE BREATFAST
+  CMP BH,2
+  JE DINNER
+  CMP BH,3
+  JE APPETIZER
+  CMP BH,4
+  JE DRINKS
+  LEA DX,M36
+  MOV AH,9
+  INT 21H      
+  LEA DX,M37 
+  MOV AH,9
+  INT 21H
+~~~
+If the user enters "1" the program will jump to the BREATFAST label and show its menu , in case of "2" it will jump to the DINNER label,
+in case of "3" it will jump to the APPETIZER label and show its menu, in case of "4" it will jump to the DRINKS label and show its menu. 
+IF the user enters any character except these characters ,the program will show this until he enters a right character :
+
+<img src ="https://user-images.githubusercontent.com/66350581/209186062-d3ffdbae-0393-496b-88be-a3f310a13093.png" width="50%">
+
+This is implemented using loop :
+
+~~~
+ EE1:
+ 
+ loop EE1
+~~~
+
+
+ 
