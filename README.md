@@ -126,10 +126,12 @@ MAIN PROC
      INT 21H    
  ~~~
    
-   This label will print the menu that will first appear when the program is run as follows :
+This label will print the menu that will first appear when the program is run as follows :
    
-   <img src="https://user-images.githubusercontent.com/65913853/209343475-a8be985d-9295-49ce-8f1b-d1ffca671e05.png" width="50%">
+<img src="https://user-images.githubusercontent.com/65913853/209343475-a8be985d-9295-49ce-8f1b-d1ffca671e05.png" width="50%">
    
+
+
 To get an input from the user we use this instructions:  
  ~~~
     MOV AH,1h
@@ -159,6 +161,8 @@ in case of "3" it will jump to the APPETIZER label and show its menu, in case of
 IF the user enters any character except these characters ,the program will show this until he enters a right character :
 
 <img src ="https://user-images.githubusercontent.com/65913853/209344186-b1cd27df-2a5c-46e6-82f3-4f03e7480a9d.png" width="50%">
+
+
 
 This is implemented using loop :
 
@@ -238,6 +242,9 @@ BREAKFAST:
 this label will print the menu of the breakfast:
 
 <img src="https://user-images.githubusercontent.com/65913853/209344373-f6b04685-5868-45a6-acb1-ec167c87aadb.png" width="50%">
+
+
+
 
 ~~~
  EE2:
@@ -351,12 +358,14 @@ If the user enters any character from "1" to "9", the program will jump to the p
             ret
 ~~~
 
-- first the program ask for the quantity 
+- firstly the program asks for the quantity 
 
 - then check if the value that user entered is a number and higher than '0' by comparing the input ascii with the ascii codes lower than that for '1' and higher than that for '9'. if this condition isn't satisfied, it will ask for the quantity again as shown
 
-<img src="https://user-images.githubusercontent.com/65913853/209344373-f6b04685-5868-45a6-acb1-ec167c87aadb.png" width="50%">
-   
+<img src="https://user-images.githubusercontent.com/66569142/209399753-2ee3700d-059e-4750-add1-f2ada9bc605f.png" width="50%">
+ 
+ 
+ 
 - then calculate the total price and store it in 'PRC' variable to add to it the total price of the next choice  
 
 - then return to the price label and jump to REPEAT_BR label 
@@ -398,9 +407,11 @@ If the user enters any character from "1" to "9", the program will jump to the p
 - the user must enter 'y' or 'n' only, otherwise the program will repeat the question as shown before.  
 - if the user enter "y" or "Y", the label EE2 will be repeated to take the order from the user
 
-- the output for this function will be as follow :
+the output will be as follow :
 
-<img src="https://user-images.githubusercontent.com/65913853/209344745-e3eefb3e-294a-421b-a371-783277791446.png" width="50%">
+<img src="https://user-images.githubusercontent.com/66569142/209400248-1d8d8679-5449-47fa-af04-9d40570eac73.png" width="50%">
+
+
 
 - if the user enter "n" or "N", the program jumps to the print function 'PRINTE' and the total price will be printed
 ~~~
@@ -506,7 +517,16 @@ If the user enters any character from "1" to "9", the program will jump to the p
 
 ~~~
 
-the way this function works is dividing the value to isolate each digit and print it by dividing the number by 100 and then by 10.
+- the way this function works is dividing the value to isolate each digit and print it by dividing the number by 100 and then by 10 assuming that the value contains up to 4 digits
+- the value of PRC is put in AX regester to do the operations on it. the value at AX is divided by 100 and as default, the result is stored at AL and the reminder at AH, then these values are stored in two variables and return them back again to work on each one alone as explained and ensure that they won't be affected when printing the string "total price:".
+- firstly, we will work on the result of the previous division and divide it by 10, then add 48 to the result to be the ascii code of the desired number and do that also to the reminder.
+- secondly, the reminder of the first division is returned back to AL and repeat the loop "print".
+- After that the user is asked if he want to return to the main menu or exit. if he entered '2', it jumps to the exit label to end the program   
+
+the output will be as follow :
+
+<img src="https://user-images.githubusercontent.com/66569142/209398815-c42ee795-14ee-42c8-8aa4-b445a308c948.png" width="50%">
+
 
 
 #### NOTE:
