@@ -285,7 +285,7 @@ this label will print the menu of the breakfast:
 If the user enters any character from "1" to "9", the program will jump to the price label of this order 
 
 ~~~
-          TEN-B:
+      TEN-B:
             
          mov BL,0Ah
                 
@@ -295,32 +295,71 @@ If the user enters any character from "1" to "9", the program will jump to the p
 ~~~                        
 
 - mov BL,0Ah   " the price of the order is put in BL register"
-- then the program will call the function "calculate" to ask for the quantity 
+- then the program will call the function "calculate" to ask for the quantity and calculate the cost 
 - label  REPEAT_BR  "to ask for another order from the user"
 ~~~
-      Calculate: 
+     Calculate: 
      
-        LEA DX,M39              
-        MOV AH,9
-        INT 21H 
-           
-        MOV AH,1
-        INT 21H
-        SUB AL,48
-        mov ah,00          
+        EE7:
+            LEA DX,M39              
+            MOV AH,9
+            INT 21H 
+               
+            MOV AH,1
+            INT 21H
         
-        MUL BL
+            CMP AL,48
+            JA EE8
+            
+            
+            LEA DX,M36
+            MOV AH,9
+            INT 21H 
+                
+                
+            LEA DX,M37 
+            MOV AH,9
+            INT 21H
+            
+            loop EE7
+            
+         EE8:  
+         
+            CMP AL,58
+            JB Break
+            
+            LEA DX,M36
+            MOV AH,9
+            INT 21H 
+                
+                
+            LEA DX,M37 
+            MOV AH,9
+            INT 21H
+            
+            loop EE7
         
-        ADD PRC,AX
-        
-        ret
+        Break:
+          
+            SUB AL,48
+            mov ah,00          
+            
+            MUL BL
+            
+            ADD PRC,AX
+            
+            ret
 ~~~
 
 - first the program ask for the quantity 
 
-- then calculate the price and store it in PRC variable 
+- then check if the value that user entered is a number and higher than '0' by comparing the input ascii with the ascii codes lower than that for '1' and higher than that for '9'. if this condition isn't satisfied, it will ask for the quantity again as shown
 
-- then return to  REPEAT_BR label 
+<img src="https://user-images.githubusercontent.com/65913853/209344373-f6b04685-5868-45a6-acb1-ec167c87aadb.png" width="50%">
+   
+- then calculate the total price and store it in 'PRC' variable to add to it the total price of the next choice  
+
+- then return to the price label and jump to REPEAT_BR label 
 
 ~~~
  REPEAT_BR:
@@ -355,23 +394,122 @@ If the user enters any character from "1" to "9", the program will jump to the p
             
             loop REPEAT_BR    
  ~~~
-- the program ask the user if he need another order 
-- if the user enter "n" or "N" then the total price will be print
-- if the user enter "y" or "Y" then label IEE will be repeated TO take the order from the user
- 
+- the program ask the user if he need another order
+- the user must enter 'y' or 'n' only, otherwise the program will repeat the question as shown before.  
+- if the user enter "y" or "Y", the label EE2 will be repeated to take the order from the user
 
 - the output for this function will be as follow :
 
 <img src="https://user-images.githubusercontent.com/65913853/209344745-e3eefb3e-294a-421b-a371-783277791446.png" width="50%">
 
+- if the user enter "n" or "N", the program jumps to the print function 'PRINTE' and the total price will be printed
+~~~
+    PRINTE:    
+        
+        mov bx,64h
+        
+        MOV AX,PRC
+        
+        div bl
+        
+        mov SN1,ah
+        mov SN2,al
+        
+        LEA DX,M40              
+        MOV AH,9
+        INT 21H
+        
+        mov al,SN2
+        
+        mov bh,0ah
+        
+        mov cx,2h
 
-IF the user enters any character except these characters ,the program will show this until he enters a right character :
+        print:     
+        
+            mov bh,0ah
+            
+            mov ah,0
+            div bh
+            
+            
+            
+            MOV DL,al
+            mov dh,ah
+            
+            
+            
+            MOV AH,2
+            add dl,48
+            INT 21H
+             
+            
+            MOV AH,2
+            MOV DL,dh
+            mov dh,0
+            
+            add dl,48
+            
+            INT 21H
+             
+            mov al,SN1
+            
+            
+            loop print 
+        
+        ;FOR LE PRINT
+        
+        LEA DX,MU
+        MOV AH,9
+        INT 21H 
+         
+        EE6:
+          
+            ;GO BACK TO the MAIN MENU 
+            
+            LEA DX,M41
+            MOV AH,9
+            INT 21H 
+              
+            ;EXIT 
+            
+            LEA DX,M42
+            MOV AH,9
+            INT 21H
+            
+            LEA DX,M2
+            MOV AH,9
+            INT 21H 
+            
+            MOV AH,1
+            INT 21H          
+            SUB AL,48
+            
+            
+            
+            CMP AL,1
+            JE TOP
+            
+            CMP AL,2
+            JE EXIT 
+            
+            
+            LEA DX,M36
+            MOV AH,9
+            INT 21H 
+                    
+                    
+            LEA DX,M37 
+            MOV AH,9
+            INT 21H 
+            loop EE6
+
+~~~
+
+the way this function works is dividing the value to isolate each digit and print it by dividing the number by 100 and then by 10.
 
 
-<img src="https://user-images.githubusercontent.com/65913853/209345031-c711edb3-68f4-4a19-b9ef-0bd28ef485aa.png" width="50%">
-
-### NOTE
-
+#### NOTE:
 - the steps of code in breakfast is applied also in dinner,drinks and Appetizer
 
 
