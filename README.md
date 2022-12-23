@@ -81,6 +81,13 @@ MAIN PROC
     MOV BH, 01110000b    
     INT 10H
     
+    MOV AH, 06h    
+    XOR AL, AL     
+    mov cx,0219h    
+    MOV DX, 0239H  
+    MOV BH, 11110000b
+    INT 10H
+~~~
 
 
 
