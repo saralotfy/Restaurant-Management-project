@@ -88,7 +88,11 @@ MAIN PROC
     MOV BH, 11110000b
     INT 10H
 ~~~
-
+we 06h in AH which is the scroll up function when using 'INT 10H' and then determine the start and end point of coloring where:
+-Upper left corner CH=row, CL=column
+-lower right corner DH=row, DL=column
+the background color is light grey and the writing color is white and in case of coloring the title the bg color is white and the writing is black where:
+-0111 : light grey , 0000 : black , 1111 : white
 
 
 ### To print string :
