@@ -71,13 +71,26 @@ MAIN PROC
 ~~~
  "MOV AX,@DATA" is the first line of code that gets run. @DATA is a variable that holds the value of the location in memory where the data segment is. 
  It moves the memory location of @DATA into the AX register."MOV DS,AX" will then set that memory location in the data segment register DS .
- 
+
+###Coloring
+~~~
+    MOV AH, 06h    
+    XOR AL, AL     
+    XOR CX, CX     
+    MOV DX, 184fH  
+    MOV BH, 01110000b    
+    INT 10H
+    
+
+
+
 ### To print string :
 -Create a string , the string must be terminated by ‘$’ sign.
 
 -Load the effective address of the string in dx using LEA command.
 
 -Print the string by calling the interrupt with 9H in AH.
+
 
  ~~~ 
   TOP:
