@@ -7,6 +7,7 @@ This is a Restaurant Management System which is capable of taking order from cus
 <video  src="https://user-images.githubusercontent.com/65913853/209354993-e1b7a432-5c6d-4d13-bdb2-abf2f268c2d4.mp4" width="400" height="400" controls></video>
 </div>
 
+
 ## Explanation of the code
  Firstly the code starts with :
 
