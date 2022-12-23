@@ -128,7 +128,7 @@ MAIN PROC
    
    This label will print the menu that will first appear when the program is run as follows :
    
-   <img src="https://user-images.githubusercontent.com/66350581/209178345-8f4e7fff-79fc-4aea-afcc-69aabae7cdff.png" width="50%">
+   <img src="https://user-images.githubusercontent.com/65913853/209343475-a8be985d-9295-49ce-8f1b-d1ffca671e05.png" width="50%">
    
 To get an input from the user we use this instructions:  
  ~~~
@@ -158,7 +158,7 @@ If the user enters "1" the program will jump to the BREATFAST label and show its
 in case of "3" it will jump to the APPETIZER label and show its menu, in case of "4" it will jump to the DRINKS label and show its menu. 
 IF the user enters any character except these characters ,the program will show this until he enters a right character :
 
-<img src ="https://user-images.githubusercontent.com/66350581/209186062-d3ffdbae-0393-496b-88be-a3f310a13093.png" width="50%">
+<img src ="https://user-images.githubusercontent.com/65913853/209344186-b1cd27df-2a5c-46e6-82f3-4f03e7480a9d.png" width="50%">
 
 This is implemented using loop :
 
@@ -237,7 +237,7 @@ BREAKFAST:
         
 this label will print the menu of the breakfast:
 
-<img src="https://user-images.githubusercontent.com/66775209/209193153-21d4bf64-00c7-451c-9cc8-ab95aefa4c13.png" width="50%">
+<img src="https://user-images.githubusercontent.com/65913853/209344373-f6b04685-5868-45a6-acb1-ec167c87aadb.png" width="50%">
 
 ~~~
  EE2:
@@ -362,13 +362,13 @@ If the user enters any character from "1" to "9", the program will jump to the p
 
 - the output for this function will be as follow :
 
-<img src="https://user-images.githubusercontent.com/66775209/209224873-e15057c4-4247-4aa3-9680-a7e8ef9e4ea5.png" width="50%">
+<img src="https://user-images.githubusercontent.com/65913853/209344745-e3eefb3e-294a-421b-a371-783277791446.png" width="50%">
 
 
 IF the user enters any character except these characters ,the program will show this until he enters a right character :
 
 
-<img src="https://user-images.githubusercontent.com/66775209/209226729-cedb3815-e7e3-4a9f-ac2a-2c2224a85f9a.png" width="50%">
+<img src="https://user-images.githubusercontent.com/65913853/209345031-c711edb3-68f4-4a19-b9ef-0bd28ef485aa.png" width="50%">
 
 ### NOTE
 
