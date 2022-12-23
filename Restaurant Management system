@@ -177,7 +177,7 @@ MAIN PROC
         SUB BH,48
         
         CMP BH,1
-        JE BREATFAST
+        JE BREAKFAST
         
          CMP BH,2
          JE DINNER   
@@ -200,7 +200,7 @@ MAIN PROC
         loop EE1      
    
    
-   BREATFAST:
+   BREAKFAST:
    
         MOV PRC,0 
         LEA DX,M7    
