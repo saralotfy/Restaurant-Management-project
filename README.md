@@ -2,8 +2,13 @@
 
 This is a Restaurant Management System which is capable of taking order from customer. Firstly it shows a menu that we can choose the type of food from it (breakfast, dinner, appetizers or drinks), then a list of the types available in either of them appears with prices . we can select the meal we want with quantity then it will calculate the price and displays it. It allows us to choose more than one order from the same list and calculate the total price.
 
+
+<div align="center">
+<video  src="https://user-images.githubusercontent.com/65913853/209354993-e1b7a432-5c6d-4d13-bdb2-abf2f268c2d4.mp4" width="400" height="400" controls></video>
+</div>
+
 ## Explanation of the code
- Firstly the code start with :
+ Firstly the code starts with :
 
 ~~~
 org 100h
@@ -29,9 +34,9 @@ name DB value
 (or)
 name DW value
 ~~~
-DB - stays for Define Byte.
+DB - stands for Define Byte.
 
-DW - stays for Define Word.
+DW - stands for Define Word.
 
 For examble:
 ~~~
@@ -156,8 +161,8 @@ To get an input from the user we use this instructions:
   MOV AH,9
   INT 21H
 ~~~
-If the user enters "1" the program will jump to the BREATFAST label and show its menu , in case of "2" it will jump to the DINNER label,
-in case of "3" it will jump to the APPETIZER label and show its menu, in case of "4" it will jump to the DRINKS label and show its menu. 
+If the user enters "1" the program will jump to the BREATFAST label and shows its menu , in case of "2" it will jump to the DINNER label,
+in case of "3" it will jump to the APPETIZER label and shows its menu, in case of "4" it will jump to the DRINKS label and shows its menu. 
 IF the user enters any character except these characters ,the program will show this until he enters a right character :
 
 <img src ="https://user-images.githubusercontent.com/65913853/209344186-b1cd27df-2a5c-46e6-82f3-4f03e7480a9d.png" width="50%">
@@ -303,7 +308,7 @@ If the user enters any character from "1" to "9", the program will jump to the p
 
 - mov BL,0Ah   " the price of the order is put in BL register"
 - then the program will call the function "calculate" to ask for the quantity and calculate the cost 
-- label  REPEAT_BR  "to ask for another order from the user"
+- label  REPEAT_BR  " isto ask for an another order from the user"
 ~~~
      Calculate: 
      
