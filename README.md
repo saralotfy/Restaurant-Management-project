@@ -72,7 +72,7 @@ MAIN PROC
  "MOV AX,@DATA" is the first line of code that gets run. @DATA is a variable that holds the value of the location in memory where the data segment is. 
  It moves the memory location of @DATA into the AX register."MOV DS,AX" will then set that memory location in the data segment register DS .
 
-###Coloring
+### Coloring
 ~~~
     MOV AH, 06h    
     XOR AL, AL     
