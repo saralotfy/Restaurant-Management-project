@@ -532,5 +532,7 @@ the output will be as follow :
 #### NOTE:
 - the steps of code in breakfast is applied also in dinner,drinks and Appetizer
 
+### link of the project :    
 
+[GITHUB CODE](https://github.com/saralotfy/Restaurant-Management-project/blob/main/Restaurant%20Management%20system) - Restaurant management project
 
