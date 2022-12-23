@@ -782,28 +782,58 @@ MAIN PROC
                             
                             
             
-   
- 
-
-
         
-        
-    Calculate: 
+   Calculate: 
      
-        LEA DX,M39              
-        MOV AH,9
-        INT 21H 
-           
-        MOV AH,1
-        INT 21H
-        SUB AL,48
-        mov ah,00          
+        EE7:
+            LEA DX,M39              
+            MOV AH,9
+            INT 21H 
+               
+            MOV AH,1
+            INT 21H
         
-        MUL BL
+            CMP AL,48
+            JA EE8
+            
+            
+            LEA DX,M36
+            MOV AH,9
+            INT 21H 
+                
+                
+            LEA DX,M37 
+            MOV AH,9
+            INT 21H
+            
+            loop EE7
+            
+         EE8:  
+         
+            CMP AL,58
+            JB Break
+            
+            LEA DX,M36
+            MOV AH,9
+            INT 21H 
+                
+                
+            LEA DX,M37 
+            MOV AH,9
+            INT 21H
+            
+            loop EE7
         
-        ADD PRC,AX
-        
-        ret
+        Break:
+          
+            SUB AL,48
+            mov ah,00          
+            
+            MUL BL
+            
+            ADD PRC,AX
+            
+            ret
         
     REPEAT_BR:
         
